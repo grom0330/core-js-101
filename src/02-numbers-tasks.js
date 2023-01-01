@@ -1,3 +1,6 @@
+/* eslint-disable nonblock-statement-body-position */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-plusplus */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -184,7 +187,10 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(num, pow) {}
+function roundToPowerOfTen(num, pow) {
+  const powerOfTen = 10 ** pow;
+  return Math.round(num / powerOfTen) * powerOfTen;
+}
 
 /**
  * Returns true is the number is prime; otherwise false.
@@ -203,8 +209,16 @@ function roundToPowerOfTen(num, pow) {}
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  let j = 0;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      j++;
+    }
+  }
+  if (j === 0) return true;
+  return false;
 }
 
 /**
@@ -222,8 +236,12 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  // eslint-disable-next-line no-restricted-globals
+  if (typeof Number(value) === 'number' && !isNaN(Number(value))) {
+    return Number(value);
+  }
+  return def;
 }
 
 module.exports = {
